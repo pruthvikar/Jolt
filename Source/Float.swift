@@ -131,7 +131,16 @@ extension Float: AccelerateFloatingPoint {
         
         return results
     }
-    
+
+      // MARK: Square 
+    public static func square(x: [Float]) -> [Float] {
+        var results = [Float](count: x.count, repeatedValue: 0.0)
+        vDSP_vsq(x, 1, &results, 1, UInt(x.count))
+
+        return results
+    }
+
+
     // MARK: Dot Product
     
     public static func dot(x: [Float], y: [Float]) -> Float {

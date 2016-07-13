@@ -133,8 +133,17 @@ extension Double: AccelerateFloatingPoint {
         
         return results
     }
-    
-    
+
+    // MARK: Square
+
+    public static func square(x: [Double]) -> [Double] {
+      var results = [Double](count: x.count, repeatedValue: 0.0)
+      vDSP_vsqD(x, 1, &results, 1, UInt(x.count))
+
+      return results
+    }
+
+
     // MARK: Dot Product
     
     public static func dot(x: [Double], y: [Double]) -> Double {

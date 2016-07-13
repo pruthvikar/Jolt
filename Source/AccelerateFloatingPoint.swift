@@ -64,7 +64,9 @@ public protocol AccelerateFloatingPoint: FloatingPointType, FloatLiteralConverti
     static func remainder(x: [Self], y: [Self]) -> [Self]
     
     static func sqrt(x: [Self]) -> [Self]
-    
+
+    static func square(x: [Self]) -> [Self]
+
     
     // MARK: Vector
     

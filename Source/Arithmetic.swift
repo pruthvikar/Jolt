@@ -137,7 +137,11 @@ public extension Array where Element: AccelerateFloatingPoint {
     public func sqrt() -> [Element] {
         return Element.sqrt(self)
     }
-    
+
+    public func square() -> [Element] {
+      return Element.square(self)
+    }
+
 }
 
 // MARK: - Operators
