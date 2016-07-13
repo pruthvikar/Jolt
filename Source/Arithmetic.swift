@@ -78,6 +78,13 @@ public func sqrt<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
     return T.sqrt(x)
 }
 
+public func atan2<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+  return T.atan2(x, y: y)
+}
+
+
+
+
 // MARK: - Arithmetic Array Extension
 
 public extension Array where Element: AccelerateFloatingPoint {
@@ -122,15 +129,20 @@ public extension Array where Element: AccelerateFloatingPoint {
         return Element.mul(self, y: y)
     }
 
-    public func scalarTimes(y: Element) -> [Element] {
-      var temp = y
-      return Element.mul(self, y: &temp)
+    public func times(y: Element) -> [Element] {
+        var temp = y
+        return Element.mul(self, y: &temp)
     }
 
     public func dividedBy(y: [Element]) -> [Element] {
         return Element.div(self, y: y)
     }
-    
+
+    public func dividedBy(y: Element) -> [Element] {
+        var temp = y
+        return Element.div(self, y: &temp)
+    }
+
     public func mod(y: [Element]) -> [Element] {
         return Element.mod(self, y: y)
     }

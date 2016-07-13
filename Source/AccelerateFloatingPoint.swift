@@ -149,7 +149,8 @@ public protocol AccelerateFloatingPoint: FloatingPointType, FloatLiteralConverti
 
     static func atan(x: [Self]) -> [Self]
 
-    
+  static func atan2(x: [Self], y: [Self]) -> [Self]
+
     // MARK: Hyperbolics
     
     static func sinh(x: [Self]) -> [Self]

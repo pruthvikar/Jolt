@@ -491,8 +491,15 @@ extension Double: AccelerateFloatingPoint {
         
         return results
     }
-    
-    
+
+    public static func atan2(x: [Double], y: [Double]) -> [Double] {
+        var results = [Double](count: x.count, repeatedValue: 0.0)
+        vvatan2(&results, x, y, [Int32(x.count)])
+
+        return results
+    }
+
+
     // MARK: Radians to Degrees
     
     public static func rad2deg(x: [Double]) -> [Double] {

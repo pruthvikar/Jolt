@@ -425,7 +425,14 @@ extension Float: AccelerateFloatingPoint {
         
         return results
     }
-    
+
+    public static func atan2(x: [Float], y: [Float]) -> [Float] {
+        var results = [Float](count: x.count, repeatedValue: 0.0)
+        vvatan2f(&results, x, y, [Int32(x.count)])
+
+        return results
+    }
+
     // MARK: Sine-Cosine
     
     public static func sincos(x: [Float]) -> (sin: [Float], cos: [Float]) {
