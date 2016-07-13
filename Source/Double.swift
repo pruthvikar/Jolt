@@ -97,7 +97,14 @@ extension Double: AccelerateFloatingPoint {
         
         return results
     }
-    
+
+    public static func mul(x: [Double], inout y: Double) -> [Double] {
+        var results = [Double](count: x.count, repeatedValue: 0.0)
+        vDSP_vsmulD(x, 1, &y, &results, 1, vDSP_Length(x.count))
+
+        return results
+    }
+
     // MARK: Divide
     
     public static func div(x: [Double], y: [Double]) -> [Double] {
@@ -106,6 +113,13 @@ extension Double: AccelerateFloatingPoint {
         
         return results
     }
+
+  public static func div(x: [Double], inout y: Double) -> [Double] {
+    var results = [Double](count: x.count, repeatedValue: 0.0)
+    vDSP_vsdivD(x, 1, &y, &results, 1, vDSP_Length(x.count))
+
+    return results
+  }
     
     // MARK: Modulo
     

@@ -121,7 +121,12 @@ public extension Array where Element: AccelerateFloatingPoint {
     public func times(y: [Element]) -> [Element] {
         return Element.mul(self, y: y)
     }
-    
+
+    public func scalarTimes(y: Element) -> [Element] {
+      var temp = y
+      return Element.mul(self, y: &temp)
+    }
+
     public func dividedBy(y: [Element]) -> [Element] {
         return Element.div(self, y: y)
     }
