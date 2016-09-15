@@ -22,7 +22,7 @@
 
 // MARK: - Fast Fourier Transform Global Functions
 
-public func fastFourierTransform<T: AccelerateFloatingPoint>(input: [T]) -> [T] {
+public func fastFourierTransform<T: AccelerateFloatingPoint>(_ input: [T]) -> [T] {
     return T.fft(input)
 }
 

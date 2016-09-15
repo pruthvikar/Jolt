@@ -22,43 +22,43 @@
 
 // MARK: - Auxillary Global Functions
 
-public func abs<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func abs<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.abs(x)
 }
 
-public func floor<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func floor<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.floor(x)
 }
 
-public func ceil<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func ceil<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.ceil(x)
 }
 
-public func neg<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func neg<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.neg(x)
 }
 
-public func clip<T: AccelerateFloatingPoint>(x: [T], low: T, high: T) -> [T] {
+public func clip<T: AccelerateFloatingPoint>(_ x: [T], low: T, high: T) -> [T] {
     return T.clip(x, low: low, high: high)
 }
 
-public func copysign<T: AccelerateFloatingPoint>(magnitude: [T], sign: [T]) -> [T] {
+public func copysign<T: AccelerateFloatingPoint>(_ magnitude: [T], sign: [T]) -> [T] {
     return T.copysign(magnitude, sign: sign)
 }
 
-public func reciprocal<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func reciprocal<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.rec(x)
 }
 
-public func round<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func round<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.round(x)
 }
 
-public func threshold<T: AccelerateFloatingPoint>(x: [T], low: T) -> [T] {
+public func threshold<T: AccelerateFloatingPoint>(_ x: [T], low: T) -> [T] {
     return T.threshold(x, low: low)
 }
 
-public func truncate<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func truncate<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.trunc(x)
 }
 
@@ -82,11 +82,11 @@ public extension Array where Element: AccelerateFloatingPoint {
         return Element.neg(self)
     }
     
-    public func clipped(low: Element, high: Element) -> [Element] {
+    public func clipped(_ low: Element, high: Element) -> [Element] {
         return Element.clip(self, low: low, high: high)
     }
     
-    public func copysign(sign: [Element]) -> [Element] {
+    public func copysign(_ sign: [Element]) -> [Element] {
         return Element.copysign(self, sign: sign)
     }
     
@@ -98,7 +98,7 @@ public extension Array where Element: AccelerateFloatingPoint {
         return Element.round(self)
     }
     
-    public func thresholded(low: Element) -> [Element] {
+    public func thresholded(_ low: Element) -> [Element] {
         return Element.threshold(self, low: low)
     }
     
@@ -110,7 +110,7 @@ public extension Array where Element: AccelerateFloatingPoint {
 
 // MARK - Operators
 
-prefix operator - {}
+prefix operator -
 
 public prefix func -<T: AccelerateFloatingPoint>(value: [T]) -> [T] {
     return T.neg(value)

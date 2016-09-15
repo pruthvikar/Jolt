@@ -23,31 +23,31 @@
 
 // MARK: - Trigonometric Global Functions
 
-public func sincos<T: AccelerateFloatingPoint>(x: [T]) -> (sin: [T], cos: [T]) {
+public func sincos<T: AccelerateFloatingPoint>(_ x: [T]) -> (sin: [T], cos: [T]) {
     return T.sincos(x)
 }
 
-public func sin<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func sin<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.sin(x)
 }
 
-public func cos<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func cos<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.cos(x)
 }
 
-public func tan<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func tan<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.tan(x)
 }
 
-public func asin<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func asin<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.asin(x)
 }
 
-public func acos<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func acos<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.acos(x)
 }
 
-public func atan<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func atan<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.atan(x)
 }
 

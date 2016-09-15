@@ -43,7 +43,7 @@ public struct Matrix<T: AccelerateFloatingPoint> {
         self.init(
             rows: rows,
             columns: columns,
-            contents: [Element](count: rows * columns, repeatedValue: repeatedValue)
+            contents: [Element](repeating: repeatedValue, count: rows * columns)
         )
     }
 
@@ -58,8 +58,10 @@ public struct Matrix<T: AccelerateFloatingPoint> {
 
         self.init(rows: m, columns: n, repeatedValue: repeatedValue)
 
-        for (i, row) in contents.enumerate() {
-            grid.replaceRange(i*n..<i*n+min(m, row.count), with: row)
+        for (i, row) in contents.enumerated() {
+          let start = i * n
+          let end = i * n + row.count < m ? row.count : m
+            grid.replaceSubrange(start..<end, with: row)
         }
     }
 
@@ -75,7 +77,7 @@ public struct Matrix<T: AccelerateFloatingPoint> {
         }
     }
 
-    private func indexIsValidForRow(row: Int, column: Int) -> Bool {
+    fileprivate func indexIsValidForRow(_ row: Int, column: Int) -> Bool {
         return row >= 0 && row < rows && column >= 0 && column < columns
     }
 }
@@ -87,7 +89,7 @@ extension Matrix: CustomStringConvertible {
         var description = ""
 
         for i in 0..<rows {
-            let contents = (0..<columns).map{"\(self[i, $0])"}.joinWithSeparator("\t")
+            let contents = (0..<columns).map{"\(self[i, $0])"}.joined(separator: "\t")
 
             switch (i, rows) {
             case (0, 1):
@@ -109,12 +111,12 @@ extension Matrix: CustomStringConvertible {
 
 // MARK: - SequenceType
 
-extension Matrix: SequenceType {
-    public func generate() -> AnyGenerator<ArraySlice<Element>> {
+extension Matrix: Sequence {
+    public func makeIterator() -> AnyIterator<ArraySlice<Element>> {
         let endIndex = rows * columns
         var nextRowStartIndex = 0
 
-        return AnyGenerator {
+        return AnyIterator {
             if nextRowStartIndex == endIndex {
                 return nil
             }
@@ -129,43 +131,43 @@ extension Matrix: SequenceType {
 
 // MARK: - Matrix Global Functions
 
-public func add<T: AccelerateFloatingPoint>(x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
+public func add<T: AccelerateFloatingPoint>(_ x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
     return T.add(x, y: y)
 }
 
-public func add<T: AccelerateFloatingPoint>(x: Matrix<T>, alpha: T) -> Matrix<T> {
+public func add<T: AccelerateFloatingPoint>(_ x: Matrix<T>, alpha: T) -> Matrix<T> {
     return T.add(x, alpha: alpha)
 }
 
-public func sub<T: AccelerateFloatingPoint>(x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
+public func sub<T: AccelerateFloatingPoint>(_ x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
     return T.sub(x, y: y)
 }
 
-public func sub<T: AccelerateFloatingPoint>(x: Matrix<T>, alpha: T) -> Matrix<T> {
+public func sub<T: AccelerateFloatingPoint>(_ x: Matrix<T>, alpha: T) -> Matrix<T> {
     return T.sub(x, alpha: alpha)
 }
 
-public func multiply<T: AccelerateFloatingPoint>(x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
+public func multiply<T: AccelerateFloatingPoint>(_ x: Matrix<T>, y: Matrix<T>) -> Matrix<T> {
     return T.mul(x, y: y)
 }
 
-public func multiply<T: AccelerateFloatingPoint>(x: Matrix<T>, alpha: T) -> Matrix<T> {
+public func multiply<T: AccelerateFloatingPoint>(_ x: Matrix<T>, alpha: T) -> Matrix<T> {
     return T.mul(x, alpha: alpha)
 }
 
-public func divide<T: AccelerateFloatingPoint>(x: Matrix<T>, by y: Matrix<T>) -> Matrix<T> {
+public func divide<T: AccelerateFloatingPoint>(_ x: Matrix<T>, by y: Matrix<T>) -> Matrix<T> {
     return T.div(x, y: y)
 }
 
-public func divide<T: AccelerateFloatingPoint>(x: Matrix<T>, by alpha: T) -> Matrix<T> {
+public func divide<T: AccelerateFloatingPoint>(_ x: Matrix<T>, by alpha: T) -> Matrix<T> {
     return T.div(x, alpha: alpha)
 }
 
-public func invert<T: AccelerateFloatingPoint>(x: Matrix<T>) -> Matrix<T> {
+public func invert<T: AccelerateFloatingPoint>(_ x: Matrix<T>) -> Matrix<T> {
     return T.inv(x)
 }
 
-public func transpose<T: AccelerateFloatingPoint>(x: Matrix<T>) -> Matrix<T> {
+public func transpose<T: AccelerateFloatingPoint>(_ x: Matrix<T>) -> Matrix<T> {
     return T.transpose(x)
 }
 
@@ -220,7 +222,7 @@ public func /<T: AccelerateFloatingPoint> (lhs: Matrix<T>, rhs: T) -> Matrix<T> 
     return T.div(lhs, alpha: rhs)
 }
 
-postfix operator ′ {}
+postfix operator ′
 public postfix func ′<T: AccelerateFloatingPoint> (value: Matrix<T>) -> Matrix<T> {
     return transpose(value)
 }

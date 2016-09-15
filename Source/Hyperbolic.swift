@@ -23,27 +23,27 @@
 
 // MARK: - Hyperbolic Global Functions
 
-public func sinh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func sinh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.sinh(x)
 }
 
-public func cosh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func cosh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.cosh(x)
 }
 
-public func tanh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func tanh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.tanh(x)
 }
 
-public func asinh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func asinh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.asinh(x)
 }
 
-public func acosh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func acosh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.acosh(x)
 }
 
-public func atanh<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func atanh<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.atanh(x)
 }
 

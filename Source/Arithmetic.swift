@@ -22,63 +22,63 @@
 
 // MARK: - Arithmetic Global Functions
 
-public func sum<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func sum<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.sum(x)
 }
 
-public func sumAbsoluteValues<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func sumAbsoluteValues<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.asum(x)
 }
 
-public func max<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func max<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.max(x)
 }
 
-public func min<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func min<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.min(x)
 }
 
-public func mean<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func mean<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.mean(x)
 }
 
-public func meanMagnitude<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func meanMagnitude<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.meamg(x)
 }
 
-public func meanSquare<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func meanSquare<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.measq(x)
 }
 
-public func add<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func add<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.add(x, y: y)
 }
 
-public func subtract<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func subtract<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.sub(x, y: y)
 }
 
-public func multiply<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func multiply<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.mul(x, y: y)
 }
 
-public func divide<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func divide<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.div(x, y: y)
 }
 
-public func mod<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func mod<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.mod(x, y: y)
 }
 
-public func remainder<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func remainder<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.remainder(x, y: y)
 }
 
-public func sqrt<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func sqrt<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.sqrt(x)
 }
 
-public func atan2<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func atan2<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
   return T.atan2(x, y: y)
 }
 
@@ -117,37 +117,37 @@ public extension Array where Element: AccelerateFloatingPoint {
         return Element.measq(self)
     }
     
-    public func plus(y: [Element]) -> [Element] {
+    public func plus(_ y: [Element]) -> [Element] {
         return Element.add(self, y: y)
     }
     
-    public func minus(y: [Element]) -> [Element] {
+    public func minus(_ y: [Element]) -> [Element] {
         return Element.sub(self, y: y)
     }
     
-    public func times(y: [Element]) -> [Element] {
+    public func times(_ y: [Element]) -> [Element] {
         return Element.mul(self, y: y)
     }
 
-    public func times(y: Element) -> [Element] {
+    public func times(_ y: Element) -> [Element] {
         var temp = y
         return Element.mul(self, y: &temp)
     }
 
-    public func dividedBy(y: [Element]) -> [Element] {
+    public func dividedBy(_ y: [Element]) -> [Element] {
         return Element.div(self, y: y)
     }
 
-    public func dividedBy(y: Element) -> [Element] {
+    public func dividedBy(_ y: Element) -> [Element] {
         var temp = y
         return Element.div(self, y: &temp)
     }
 
-    public func mod(y: [Element]) -> [Element] {
+    public func mod(_ y: [Element]) -> [Element] {
         return Element.mod(self, y: y)
     }
     
-    public func remainderWhenDividedBy(y: [Element]) -> [Element] {
+    public func remainderWhenDividedBy(_ y: [Element]) -> [Element] {
         return Element.remainder(self, y: y)
     }
 
@@ -168,7 +168,7 @@ public func +<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
 }
 
 public func +<T: AccelerateFloatingPoint>(lhs: [T], rhs: T) -> [T] {
-    return T.add(lhs, y: [T](count: lhs.count, repeatedValue: rhs))
+    return T.add(lhs, y: [T](repeating: rhs, count: lhs.count))
 }
 
 public func -<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
@@ -176,7 +176,7 @@ public func -<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
 }
 
 public func -<T: AccelerateFloatingPoint>(lhs: [T], rhs: T) -> [T] {
-    return T.sub(lhs, y: [T](count: lhs.count, repeatedValue: rhs))
+    return T.sub(lhs, y: [T](repeating: rhs, count: lhs.count))
 }
 
 public func /<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
@@ -184,7 +184,7 @@ public func /<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
 }
 
 public func /<T: AccelerateFloatingPoint>(lhs: [T], rhs: T) -> [T] {
-    return T.div(lhs, y: [T](count: lhs.count, repeatedValue: rhs))
+    return T.div(lhs, y: [T](repeating: rhs, count: lhs.count))
 }
 
 public func *<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
@@ -192,7 +192,7 @@ public func *<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
 }
 
 public func *<T: AccelerateFloatingPoint>(lhs: [T], rhs: T) -> [T] {
-    return T.mul(lhs, y: [T](count: lhs.count, repeatedValue: rhs))
+    return T.mul(lhs, y: [T](repeating: rhs, count: lhs.count))
 }
 
 public func %<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
@@ -200,7 +200,7 @@ public func %<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
 }
 
 public func %<T: AccelerateFloatingPoint>(lhs: [T], rhs: T) -> [T] {
-    return T.mod(lhs, y: [T](count: lhs.count, repeatedValue: rhs))
+    return T.mod(lhs, y: [T](repeating: rhs, count: lhs.count))
 }
 
 

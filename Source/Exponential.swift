@@ -23,27 +23,27 @@
 
 // MARK: - Exponential Global Functions
 
-public func exp<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func exp<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.exp(x)
 }
 
-public func exp2<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func exp2<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.exp2(x)
 }
 
-public func log<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func log<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.log(x)
 }
 
-public func log2<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func log2<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.log2(x)
 }
 
-public func log10<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func log10<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.log10(x)
 }
 
-public func logb<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func logb<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return T.logb(x)
 }
 

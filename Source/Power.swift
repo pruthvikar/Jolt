@@ -22,11 +22,11 @@
 
 // MARK: - Power Global Functions
 
-public func pow<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func pow<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.pow(x, y: y)
 }
 
-public func raise<T: AccelerateFloatingPoint>(x: [T], toPower y: [T]) -> [T] {
+public func raise<T: AccelerateFloatingPoint>(_ x: [T], toPower y: [T]) -> [T] {
     return T.pow(x, y: y)
 }
 
@@ -34,7 +34,7 @@ public func raise<T: AccelerateFloatingPoint>(x: [T], toPower y: [T]) -> [T] {
 
 public extension Array where Element: AccelerateFloatingPoint {
     
-    public func raisedTo(y: [Element]) -> [Element] {
+    public func raisedTo(_ y: [Element]) -> [Element] {
         return Element.pow(self, y: y)
     }
     

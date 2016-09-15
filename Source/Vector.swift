@@ -9,30 +9,30 @@
 // MARK: Normalization
 
 extension AccelerateFloatingPoint {
-    public static func normalize<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+    public static func normalize<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
         return  x / T.norm(x)
     }
 }
 
 // MARK: - Vector Global Functions
 
-public func dot<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> T {
+public func dot<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> T {
     return T.dot(x, y: y)
 }
 
-public func cross<T: AccelerateFloatingPoint>(x: [T], y: [T]) -> [T] {
+public func cross<T: AccelerateFloatingPoint>(_ x: [T], y: [T]) -> [T] {
     return T.cross(x, y: y)
 }
 
-public func length<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func length<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.length(x)
 }
 
-public func norm<T: AccelerateFloatingPoint>(x: [T]) -> T {
+public func norm<T: AccelerateFloatingPoint>(_ x: [T]) -> T {
     return T.norm(x)
 }
 
-public func normalize<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
+public func normalize<T: AccelerateFloatingPoint>(_ x: [T]) -> [T] {
     return  T.normalize(x)
 }
 
@@ -40,11 +40,11 @@ public func normalize<T: AccelerateFloatingPoint>(x: [T]) -> [T] {
 
 public extension Array where Element: AccelerateFloatingPoint {
     
-    public func dot(y: [Element]) -> Element {
+    public func dot(_ y: [Element]) -> Element {
         return Element.dot(self, y: y)
     }
     
-    public func crossing(y: [Element]) -> [Element] {
+    public func crossing(_ y: [Element]) -> [Element] {
         return Element.cross(self, y: y)
     }
     
@@ -65,12 +65,12 @@ public extension Array where Element: AccelerateFloatingPoint {
 
 // MARK: - Operators
 
-infix operator • {}
+infix operator •
 public func •<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> T {
     return T.dot(lhs, y: rhs)
 }
 
-infix operator ⨯ {}
+infix operator ⨯
 public func ⨯<T: AccelerateFloatingPoint>(lhs: [T], rhs: [T]) -> [T] {
     return T.cross(lhs, y: rhs)
 }
